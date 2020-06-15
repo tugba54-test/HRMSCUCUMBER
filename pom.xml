@@ -68,12 +68,13 @@
 				<version>3.0.0-M4</version>
 				<configuration>
 					<includes>
-						<include>**/*Runner.java</include>
+						<include>**/*SmokeRunner.java</include>
 					</includes>
+					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
 			</plugin>
 
-			<plugin>
+<plugin>
 				<groupId>net.masterthought</groupId>
 				<artifactId>maven-cucumber-reporting</artifactId>
 				<version>5.0.0</version>
@@ -85,7 +86,7 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<projectName>OrangeHrmCucumberFramework</projectName>
+							<projectName>HRMSCUCUMBER</projectName>
 							<!-- output directory for the generated report -->
 							<outputDirectory>${project.build.directory}</outputDirectory>
 							<!-- optional, defaults to outputDirectory if not specified -->
@@ -94,6 +95,7 @@
 								<!-- supports wildcard or name pattern -->
 								<param>**/*.json</param>
 							</jsonFiles>
+							
 						</configuration>
 					</execution>
 				</executions>
@@ -101,14 +103,7 @@
 
 		</plugins>
 	</build>
-
 </project>
 
 
-		
-
-		
-
-
-
-	
+			

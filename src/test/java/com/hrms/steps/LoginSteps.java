@@ -93,12 +93,7 @@ public class LoginSteps extends CommonMethods {
 			String exErrMsg = list.get(2);
 			Assert.assertEquals("Error message mismatch", exErrMsg, actErrMsg);
 
-	    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-	    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-	    // Double, Byte, Short, Long, BigInteger or BigDecimal.
-	    //
-	    // For other transformations you can register a DataTableType.
-	    
+	   
 	}
 
 

@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: com.hrms.runners.SmokeRunner
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.136 s <<< FAILURE! - in com.hrms.runners.SmokeRunner
+com.hrms.runners.SmokeRunner.initializationError  Time elapsed: 0.002 s  <<< ERROR!
+io.cucumber.core.exception.CucumberException: Unknown option: -Dcucumber.options=--tags@deneme
+

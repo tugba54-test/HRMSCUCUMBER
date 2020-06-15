@@ -9,7 +9,7 @@ public class Constants{
 	
 	public static final int EXPLICIT_WAIT_TIME=30;//pageLoadtime
 	
-	public static final String EXCEL_FILEPATH=System.getProperty("user.dir")+"\\src\\test\\resources\\testdata\\Book1.xlsx";
+	public static final String EXCEL_FILEPATH=System.getProperty("user.dir")+"/src/test/resources/TestData/AddInfo.xlsx";
 	
 	public static final String HRM_URL="http://166.62.36.207/humanresources/symfony/web/index.php/auth/login";
 	
@@ -19,7 +19,7 @@ public class Constants{
 	
 	
 
-	public static final String  SCREENSHOTS_FILEPATH = System.getProperty("user.dir")+"/target/screenshots/";
+	public static final String  SCREENSHOTS_FILEPATH = System.getProperty("user.dir")+"/screenshots/";
 	
 
 }

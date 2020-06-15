@@ -64,4 +64,4 @@ Feature: Login
       |          | admin123  | Username cannot be empty |
       |          |           | Username cannot be empty |
       
-      # headersiz 5 satir bilgi List<List<String>> lists = dataTable.asList();
+      # headersiz 5 satir bilgi List<List<String>> lists = dataTable.asLists();

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import com.hrms.utils.CommonMethods;
@@ -31,9 +32,9 @@ public class EmployeeSearchSteps extends CommonMethods {
 	    
 	}
 
-	@When("user enters valid employee id")
-	public void user_enters_valid_employee_id() {
-	  sendText(viewEmp.EmpId,"1453");
+	@When("user enters valid employee id {string}")
+	public void user_enters_valid_employee_id(String string) {
+	  sendText(viewEmp.EmpId,string);
 	  jsClick(viewEmp.searchBtn);
 	
 	  
@@ -45,17 +46,43 @@ public class EmployeeSearchSteps extends CommonMethods {
 	public void user_see_employee_information_is_displayed() {
 	
 	   System.out.println("Employee is displayed");
-	   tearDown();
+	   
 	}
 
-	@When("user enters valid employee name and last name")
-	public void user_enters_valid_employee_name_and_last_name() {
-		empList.Empname.sendKeys("Amanda Sarikaya");
+	@When("user enters valid employee name {string}")
+	public void user_enters_valid_employee_name(String string) {
+		waitForClickability(empList.Empname);
+		//empList.Empname.sendKeys(string,Keys.ENTER);
+		sendText(empList.Empname, string);
+		wait(4);
 		jsClick(viewEmp.searchBtn);
-		List<WebElement> name=driver.findElements(By.xpath("//table[@id='resultTable']//tr/td[3]"));
-	
+		WebElement name=driver.findElement(By.xpath("//table[@id='resultTable']//tr/td[3]"));
+	wait(3);
 		Assert.assertTrue(name.equals("Amanda"));
 	}
+	
+	@When("user enter valid  {string} and {string}")
+	public void user_enter_valid_and(String string, String string2) {
+		sendText(login.username,string);
+		sendText(login.password,string2);
+		
+		
+	}
+
+	@When("user click on login button")
+	public void user_click_on_login_button() {
+		click(login.loginBtn);
+	}
+
+
+
+	@Then("{string}  is successfully logged in")
+	public void is_successfully_logged_in(String string) {
+	   Assert.assertEquals("Mismatch admin", "Welcome "+string , dashboard.welcome.getText());
+	}
+
+
+
 
 
 }
