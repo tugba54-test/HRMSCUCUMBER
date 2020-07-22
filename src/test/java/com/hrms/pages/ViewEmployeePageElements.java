@@ -1,6 +1,9 @@
 package com.hrms.pages;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +27,18 @@ public class ViewEmployeePageElements extends CommonMethods{
 	
 	@FindBy(xpath="//table[@id='resultTable']//td[2]/a")
 	public WebElement id;
+	
+	public List<Map<String,String>> getFirstnameFromTable(){
+		
+		List<Map<String,String>>uiName=new ArrayList<>();
+		for(WebElement row:tableFirstName) {
+			Map<String,String> storeUiNames=new LinkedHashMap<>();
+			String tablename=row.getText();
+			storeUiNames.put("emp_firstname",tableName);
+			uiName.add(storeUiNames);
+		}
+		return uiName;
+	}
 	
 public ViewEmployeePageElements() {
 		PageFactory.initElements(BaseClass.driver, this);

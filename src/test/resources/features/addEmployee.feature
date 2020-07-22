@@ -37,7 +37,7 @@ Feature: Add Employee
     Examples: 
       | Firstname | MiddleName | LastName |
       | Faisal    | L          | Saki     |
-      | Yunus     | E          | Yakut    |
+      | Ahmet     | E          | Haci    |
 
   #adding multiple employees using Cucumber Data table
   @addEmployee

@@ -81,8 +81,11 @@ public class EmployeeSearchSteps extends CommonMethods {
 	   Assert.assertEquals("Mismatch admin", "Welcome "+string , dashboard.welcome.getText());
 	}
 
+	@Then("get first name from table")
+	public void get_first_name_from_table() {
+	  
+	}
 
-
-
+	
 
 }
