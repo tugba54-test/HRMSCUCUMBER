@@ -16,8 +16,8 @@ import io.cucumber.junit.*;
 		tags = "@smoke",
 	    plugin = { "pretty",
 	    		"html:target/cucumber-default-report",
-				"json:target/cucumber.json",
-				"rerun:target/failed.txt"
+				"json:target/cucumber.json"
+				//"rerun:target/failed.txt"
 }
 )
 
