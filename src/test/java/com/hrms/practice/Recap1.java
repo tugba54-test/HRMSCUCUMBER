@@ -34,17 +34,17 @@ public class Recap1 {
 		System.out.println(colName);
 	}
 	
-	String id;
-	String name;
-	while(rs.next()) {
-		id=rs.getObject("id").toString();
-		name=getObject("name").toString();
-		
-		System.out.println(id);
-		System.out.println(name);
-		
-	}
-	
+//	String id;
+//	String name;
+//	while(rs.next()) {
+//		id=rs.getObject("id").toString();
+//		name=getObject("name").toString();
+//		
+//		System.out.println(id);
+//		System.out.println(name);
+//		
+//	}
+//	
 	
 
 }

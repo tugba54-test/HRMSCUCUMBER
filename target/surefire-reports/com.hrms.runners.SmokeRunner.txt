@@ -1,7 +1,11 @@
 -------------------------------------------------------------------------------
 Test set: com.hrms.runners.SmokeRunner
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.136 s <<< FAILURE! - in com.hrms.runners.SmokeRunner
-com.hrms.runners.SmokeRunner.initializationError  Time elapsed: 0.002 s  <<< ERROR!
-io.cucumber.core.exception.CucumberException: Unknown option: -Dcucumber.options=--tags@deneme
+Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 55.545 s <<< FAILURE! - in com.hrms.runners.SmokeRunner
+Login.Valid login validation  Time elapsed: 23.271 s  <<< ERROR!
+org.openqa.selenium.NoSuchSessionException: 
+Session ID is null. Using WebDriver after calling quit()?
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-PTINUE1', ip: '192.168.0.27', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_251'
+Driver info: driver.version: RemoteWebDriver
 

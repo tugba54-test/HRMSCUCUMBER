@@ -14,7 +14,7 @@ import io.restassured.specification.RequestSpecification;
 public class Get_getAllEmployeesApiSteps extends CommonMethods{
 	
 	private static RequestSpecification request;
-	private Response response;
+	private io.restassured.response.Response response;
 	
 	@Given("user generates token")
 	public void user_generates_token() {

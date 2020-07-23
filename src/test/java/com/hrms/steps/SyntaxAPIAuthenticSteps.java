@@ -5,6 +5,7 @@ import javax.xml.ws.Response;
 import org.junit.Test;
 
 import io.cucumber.java.en.Given;
+import io.restassured.specification.RequestSpecification;
 
 public class SyntaxAPIAuthenticSteps {
 	/**Please import the following import static io.restassured.RestAsured.*
@@ -17,15 +18,15 @@ public class SyntaxAPIAuthenticSteps {
 	public static String Token;
 	private static RequestSpecification request;
 	
-	@Given("user generates token")
-	@Test
-	public void user_generates_token() {
-		request=given.header("Content-type","application/json").
-				body(readJson(API_Constants.GENERATE_TOKEN_JSON_FILEPATH));
-		
-		
-	response=request.when()post(API_Constants.GENERATE_TOKEN_URI);
-	}
+	//@Given("user generates token")
+//	@Test
+//	public void user_generates_token() {
+//		request=given.header("Content-type","application/json").
+//				body(readJson(API_Constants.GENERATE_TOKEN_JSON_FILEPATH));
+//		
+//		
+//	response=request.when()post(API_Constants.GENERATE_TOKEN_URI);
+//	}
 
 	
 }
