@@ -25,9 +25,9 @@ import io.restassured.specification.RequestSpecification;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
-public class HardCodedExamples {
+public class HardcodedExamples {
 	
-	static String empId;
+	public static String empId;
 
 	/**
 	 * Rest Assured 
@@ -40,8 +40,8 @@ public class HardCodedExamples {
 	
 	static String baseURI=RestAssured.baseURI = "http://18.232.148.34/syntaxapi/api";
 	
-	//@Test
-	public void sampleTestNotes() {
+	@Test
+	public void asampleTestNotes() {
 		RestAssured.baseURI = "http://18.232.148.34/syntaxapi/api";
 		String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTUwOTQ4OTEsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTU5NTEzODA5MSwidXNlcklkIjoiNDkyIn0.E9yzfdZrrRSwsIbDH3gIdTEpjpr9w1-H13WqDb2BMqk";
 
@@ -65,8 +65,8 @@ public class HardCodedExamples {
 		 getOneEmployeeResponse.then().assertThat().statusCode(200);
 	}
 
-	//@Test
-	public void POSTcreateEmployee() {
+	@Test
+	public void bPOSTcreateEmployee() {
 		
 		RequestSpecification createEmployeeRequest=given().header("Content-type", "application/json")
 		.header("Authorization", Constants.token).body("{\r\n" + 
@@ -139,14 +139,14 @@ public class HardCodedExamples {
 	}
 	
 	//@Test
-	public void GetAllEmployees() {
+	public void cGetAllEmployees() {
 		
 		RequestSpecification getAllEmployeeRequest = given().header("Content-type", "application/json")
 				.header("Authorization", Constants.token).log().all();
 		
 		 Response getAllEmployeeResponse=getAllEmployeeRequest.when().get("/getAllEmployees.php");
 	
-		 getAllEmployeeResponse.prettyPrint();
+		// getAllEmployeeResponse.prettyPrint();
 		 
 		 getAllEmployeeResponse.then().assertThat().statusCode(200);
 		 
@@ -160,14 +160,14 @@ public class HardCodedExamples {
 		 int counter = 0;
 		 for(int i=0;i<sizeOfList;i++) {
 			 allEmployeeId= js.getString("Employees["+ i +"].employee_id");
-			 System.out.println(allEmployeeId);
+//			 System.out.println(allEmployeeId);
 			counter++;
 			
 			if(allEmployeeId.contentEquals(empId)) {
 				System.out.println("Employee Id: "+empId+" is present in body");
-				 String empFirstname= js.getString("Employees["+ i +"].emp_firstname");
-				
-			}
+			 String empFirstname= js.getString("Employees["+ i +"].emp_firstname");
+			
+		}
 		 }
 		 
 		System.out.println("Counter number "+counter);
@@ -175,10 +175,10 @@ public class HardCodedExamples {
 	}
 	
 	@Test
-	public void UpdatedEmployee(){
+	public void dPUTUpdatedEmployee(){
 		RequestSpecification UpdateEmpRequest=given().header("Content-type", "application/json")
 				.header("Authorization", Constants.token).body("{\r\n" + 
-						"  \"employee_id\": \"" + empId + "\",\r\n" + 
+						"  \"employee_id\": \""+empId+"\",\r\n" + 
 						"  \"emp_firstname\": \"SyntaxUpdated\",\r\n" + 
 						"  \"emp_lastname\": \"Updatedlast\",\r\n" + 
 						"  \"emp_middle_name\": \"string\",\r\n" + 
@@ -190,8 +190,48 @@ public class HardCodedExamples {
 		
 		Response UpdateResponse=UpdateEmpRequest.when().put("/updateEmployee.php");
 		UpdateResponse.prettyPrint();
+		String empID=UpdateResponse.body().jsonPath().getString("employee[0].employee_id");
+		UpdateResponse.then().assertThat().statusCode(201);
 		
-		UpdateResponse.then().assertThat().statusCode(200);
+	}
+	
+	@Test
+	public void gDeleteEmployee(){
+		RequestSpecification deleteEmRequest=given().header("Content-type", "application/json")
+				.header("Authorization", Constants.token).param("employee_id",empId); //.log().all()
+		
+		Response deleteResponse=deleteEmRequest.when().delete("/deleteEmployee.php");
+		deleteResponse.prettyPrint();
+		deleteResponse.then().statusCode(201);
+		System.out.println("deleted the employee id number is "+empId);
+		deleteResponse.then().assertThat().body("message", equalTo("Entry deleted"));
+		
+	}
+	@Test
+	public void eGETUpdatedEmployee() {
+		RequestSpecification getUpdatedEmpR=given().header("Content-type", "application/json")
+				.header("Authorization", Constants.token).queryParam("employee_id", empId).log().all();
+		
+	Response getUpdatedEmpRespo=getUpdatedEmpR.when().get("/getOneEmployee.php");
+	
+	getUpdatedEmpRespo.prettyPrint();
+	
+	getUpdatedEmpRespo.then().assertThat().body("employee[0].emp_firstname", equalTo("SyntaxUpdated"));
+		
+	}
+	@Test
+	public void fPatchpartialUpdateEmployee() {
+		RequestSpecification PartialUpdateReq=given().header("Content-type", "application/json")
+				.header("Authorization", Constants.token).body("{\r\n" + 
+						"  \"employee_id\": \""+empId+"\",\r\n" + 
+						"  \"emp_firstname\": \"PartialUpdated\",\r\n" + 
+						"  \"emp_lastname\": \"partiallast\",\r\n" +"}");
+		
+		Response PartialUpdateRspnse=PartialUpdateReq.when().patch("\r\n" + 
+				"/updatePartialEmplyeesDetails.php\r\n" + 
+				"");
+		PartialUpdateRspnse.prettyPrint();
+		PartialUpdateRspnse.then().assertThat().statusCode(201);
 		
 	}
 }

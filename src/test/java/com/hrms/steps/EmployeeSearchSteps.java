@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 
 import com.hrms.utils.CommonMethods;
 import com.hrms.utils.ConfigsReader;
+import com.hrms.utils.GlobalVariables;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -33,8 +34,9 @@ public class EmployeeSearchSteps extends CommonMethods {
 	}
 
 	@When("user enters valid employee id {string}")
-	public void user_enters_valid_employee_id(String string) {
-	  sendText(viewEmp.EmpId,string);
+	public void user_enters_valid_employee_id(String empID) {
+	  sendText(viewEmp.EmpId,empID);
+	  GlobalVariables.empId=empID;
 	  jsClick(viewEmp.searchBtn);
 	
 	  
@@ -65,27 +67,36 @@ public class EmployeeSearchSteps extends CommonMethods {
 	public void user_enter_valid_and(String string, String string2) {
 		sendText(login.username,string);
 		sendText(login.password,string2);
-		
-		
 	}
+		
+	
+	
 
 	@When("user click on login button")
 	public void user_click_on_login_button() {
 		click(login.loginBtn);
 	}
 
-
+	
 
 	@Then("{string}  is successfully logged in")
 	public void is_successfully_logged_in(String string) {
 	   Assert.assertEquals("Mismatch admin", "Welcome "+string , dashboard.welcome.getText());
 	}
-
-	@Then("get first name from table")
-	public void get_first_name_from_table() {
-	  
+	
+	@Then("verify table is displayed")
+	public void verify_table_is_displayed() {
+		Assert.assertEquals(true, viewEmp.isTableDispalyed());
 	}
 
+	@Then("validate first name from ui against db")
+	public void validate_first_name_from_ui_against_db() {
+	   Assert.assertEquals(DBSteps.dbData, viewEmp.getFirstnameFromTable());
+	}
 	
+	@Then("get first name from table")
+	public void get_first_name_from_table() {
+		System.out.println(viewEmp.getFirstnameFromTable());
+	}
 
 }

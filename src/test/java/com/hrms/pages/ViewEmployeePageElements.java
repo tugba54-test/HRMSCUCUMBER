@@ -28,17 +28,30 @@ public class ViewEmployeePageElements extends CommonMethods{
 	@FindBy(xpath="//table[@id='resultTable']//td[2]/a")
 	public WebElement id;
 	
-	//public List<Map<String,String>> getFirstnameFromTable(){
+	@FindBy(xpath="//table[@id='resultTable']")
+	public WebElement employeesTable;
+	
+	@FindBy(xpath="//table[@id='resultTable']//tbody/tr/td[3]")
+	public List<WebElement> tableFirstName;
+	
+	
+	
+	public boolean isTableDispalyed() {
+		return employeesTable.isDisplayed();
 		
-//		List<Map<String,String>>uiName=new ArrayList<>();
-//		for(WebElement row:tableFirstName) {
-//			Map<String,String> storeUiNames=new LinkedHashMap<>();
-//			String tablename=row.getText();
-//			storeUiNames.put("emp_firstname",tableName);
-//			uiName.add(storeUiNames);
-//		}
-	//	return uiName;
-	//}
+	}
+	
+	public List<Map<String,String>> getFirstnameFromTable(){
+		
+		List<Map<String,String>>uiName=new ArrayList<>();
+		for(WebElement row:tableFirstName) {
+		Map<String,String> storeUiNames=new LinkedHashMap<>();
+		String tableName=row.getText();
+		storeUiNames.put("emp_firstname",tableName);
+			uiName.add(storeUiNames);
+	}
+		return uiName;
+	}
 	
 public ViewEmployeePageElements() {
 		PageFactory.initElements(BaseClass.driver, this);

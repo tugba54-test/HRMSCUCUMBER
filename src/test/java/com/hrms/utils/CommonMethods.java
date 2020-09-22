@@ -126,8 +126,8 @@ public class CommonMethods extends PageInitializer{
 	}
 
 	/**
-	 * Methods that gets text of alert and catches exception if alert is not present
-	 * 
+	 * Methods that gets text of alert and catches exception 
+	 * if alert is not present
 	 * @return String alert text
 	 */
 	public static String getAlertText() {

@@ -72,6 +72,13 @@
     <scope>test</scope>
 </dependency>
 
+	<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160810</version>
+		</dependency>
+
 		
 		</dependencies>
 		
@@ -83,7 +90,7 @@
 				<version>3.0.0-M4</version>
 				<configuration>
 					<includes>
-						<include>**/*SmokeRunner.java</include>
+						<!--   <include>**/*SmokeRunner.java</include>-->
 					</includes>
 					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>

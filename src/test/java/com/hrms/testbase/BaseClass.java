@@ -47,7 +47,6 @@ public class BaseClass {
 		}
 		driver.get(ConfigsReader.getProperty("url"));
 		driver.manage().window().maximize();
-		//driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		PageInitializer.initialize();
 		return driver;

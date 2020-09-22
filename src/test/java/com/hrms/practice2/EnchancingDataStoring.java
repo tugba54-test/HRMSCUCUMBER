@@ -13,6 +13,8 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import com.hrms.utils.DBUtils;
+
 
 public class EnchancingDataStoring {
 	String dbUsername = "syntax_hrm";
@@ -35,15 +37,16 @@ Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
 		List<Map<String,String>>listData=new ArrayList<>();
 		Map<String,String>mapData;
 		
-		while(rs.next()) {
-			mapData=new LinkedHashMap<>();
-			for(int i=1;i<=rsMetaData.getColumnCount();i++) {
+		while(rs.next()) {// rows
+			mapData=new LinkedHashMap<>();//insertion order istedigimiz icn bu LinkedHashmap i kullandk
+			for(int i=1;i<=rsMetaData.getColumnCount();i++) {//column
 				mapData.put(rsMetaData.getColumnName(i), rs.getObject(i).toString());
 			}
 			listData.add(mapData);
 		}
 		
 		System.out.println(listData);
+		DBUtils.closeConnection() ;
 	}
 
 }

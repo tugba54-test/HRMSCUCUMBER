@@ -16,6 +16,7 @@ public class DBUtils {
 	private static Connection conn;
 	private static Statement st;
 	private static ResultSet rs;
+	//private static ResultSetMetaData rsMData;
 	private static List<Map<String,String>>listData;
 	
 	/**
@@ -40,6 +41,7 @@ public class DBUtils {
 			st=conn.createStatement();
 			rs=st.executeQuery(sqlQuery);
 			ResultSetMetaData rsMetaData=rs.getMetaData();
+			
 			listData=new ArrayList<>();
 			while(rs.next()) {
 				Map<String,String>mapData=new LinkedHashMap<>();

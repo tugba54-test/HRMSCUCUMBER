@@ -17,7 +17,7 @@ public class getjobTitles {
 	public void getJobTitles(){
 		
 		RequestSpecification GetJobTitles=given().header("Content-type", "application/json")
-				.header("Authorization", Constants.token).log().all();
+				.header("Authorization", TokenGenerationSteps.token).log().all();
 		
 		Response getJobTitleR=GetJobTitles.when().get("/jobTitle.php");
 		
@@ -31,7 +31,7 @@ public class getjobTitles {
 	public void UpdateEmployee() {
 		
 		RequestSpecification UpdateEmpRequest=given().header("Content-type", "application/json")
-				.header("Authorization", Constants.token).body("{\r\n" + 
+				.header("Authorization", TokenGenerationSteps.token).body("{\r\n" + 
 						"  \"employee_id\": \"16447A\",\r\n" + 
 						"  \"emp_firstname\": \"SyntaxUpdated\",\r\n" + 
 						"  \"emp_lastname\": \"Updatedlast\",\r\n" + 
